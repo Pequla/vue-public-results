@@ -1,0 +1,9 @@
+.search-box {
+  max-width: 400px;
+}
+
+@media print {
+  .hide-on-print {
+    display: none;
+  }
+}
