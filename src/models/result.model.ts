@@ -1,5 +1,5 @@
-import { SubjectModel } from "./student.model"
-import { StudentModel } from "./subject.model"
+import { SubjectModel } from "./subject.model"
+import { StudentModel } from "./student.model"
 
 export interface ResultModel {
     studentSubjectId: number

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { SubjectModel } from './models/student.model';
+import { SubjectModel } from './models/subject.model';
 import { ResultModel } from './models/result.model';
 import axios from 'axios';
 
@@ -37,6 +37,12 @@ client.get(`/subject/permalink/${permalink}`)
 
 function getTotalPoints(result: ResultModel) {
   const total = (result.firstMidterm ?? 0) + (result.secondMidterm ?? 0) + (result.finalExam ?? 0) + (result.attendanceLectures ?? 0) + (result.attendanceExcercises ?? 0)
+  if (((result.firstMidterm ?? 0) < (subject.value!.firstMidtermMax / 2)) && ((result.secondMidterm ?? 0) < (subject.value!.secondMidtermMax / 2)))
+    return {
+      value: 5,
+      points: total,
+      style: 'fw-bold text-danger'
+    }
   return (() => {
     switch (true) {
       case total <= 50:
@@ -138,7 +144,7 @@ loadResults()
         {{ subject.lang == "en" ? "Results are loading..." : "Rezultati se učitavaju..." }}
       </div>
     </div>
-    <div class="text-center hide-on-print">&copy; {{ new Date().getFullYear() }} {{ subject.lang == "en" ? "Singidunum University" :
-      "Univerzitet Singidunum" }}</div>
+    <div class="text-center hide-on-print">&copy; {{ new Date().getFullYear() }} {{ subject.lang == "en" ?
+      "Singidunum University" : "Univerzitet Singidunum" }}</div>
   </div>
 </template>

@@ -1,9 +1,8 @@
-export interface SubjectModel {
-    subjectId: number
-    name: string
-    acronyms: string
-    permalink: string
-    lang: 'sr' | 'en'
+export interface StudentModel {
+    studentId: number
+    index: string
+    firstName: string
+    lastName: string
     createdAt: string
     updatedAt: string
 }

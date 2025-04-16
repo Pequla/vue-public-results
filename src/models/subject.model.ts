@@ -1,8 +1,12 @@
-export interface StudentModel {
-    studentId: number
-    index: string
-    firstName: string
-    lastName: string
+export interface SubjectModel {
+    subjectId: number
+    name: string
+    acronyms: string
+    permalink: string
+    finalExamMax: number
+    firstMidtermMax: number
+    secondMidtermMax: number
+    lang: 'sr' | 'en'
     createdAt: string
     updatedAt: string
 }
