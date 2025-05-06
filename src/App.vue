@@ -29,7 +29,10 @@ const client = axios.create({
 })
 
 client.get(`/subject/permalink/${permalink}`)
-  .then(rsp => subject.value = rsp.data)
+  .then(rsp => {
+    subject.value = rsp.data
+    loadResults()
+  })
   .catch(e => {
     console.error(e)
     goToHomePage()
@@ -100,8 +103,6 @@ function loadResults() {
       results.value = rsp.data
     })
 }
-
-loadResults()
 </script>
 
 <template>
